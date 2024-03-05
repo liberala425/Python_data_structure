@@ -51,10 +51,13 @@ def list_manipulation(lst, command, location, value=None):
         if location == 'end':
             lst.append(value)
         elif location == 'beginning':
-            lst = [value] + lst
+            # NOTE: [value] + lst is wrong, the change will not take inplace for lst
+            # NOTE: lst.insert() will make the change in place
+            lst = lst.insert(0, value) 
         else:
             return None
         return lst
     else:
         return None
+
 
